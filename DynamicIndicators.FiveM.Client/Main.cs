@@ -80,7 +80,30 @@ namespace DynamicIndicators.FiveM.Client
                     
                     if (_currentBlinkerParameters.Duration > 0)
                         AttachTickHandler(AnimateBlinkersAsync);
+
+                    AttachTickHandler(VehicleHeadlightsControlsAsync);
                 }
+            }
+        }
+
+        private async Task VehicleHeadlightsControlsAsync()
+        {
+            if (Game.IsControlJustPressed(0, Control.PhoneLeft))
+            {
+                _currentVehicle.IsLeftIndicatorLightOn = !_currentVehicle.IsLeftIndicatorLightOn;
+                _currentVehicle.IsRightIndicatorLightOn = false;
+            }
+
+            if (Game.IsControlJustPressed(0, Control.PhoneRight))
+            {
+                _currentVehicle.IsLeftIndicatorLightOn = false;
+                _currentVehicle.IsRightIndicatorLightOn = !_currentVehicle.IsRightIndicatorLightOn;
+            }
+
+            if (Game.IsControlJustPressed(0, Control.PhoneUp))
+            {
+                _currentVehicle.IsLeftIndicatorLightOn = !_currentVehicle.IsLeftIndicatorLightOn;
+                _currentVehicle.IsRightIndicatorLightOn = !_currentVehicle.IsRightIndicatorLightOn;
             }
         }
 
