@@ -6,7 +6,8 @@ description "Dynamic Indicators converted for FiveM by Local9"
 version "1.0.0"
 
 files {
-	"Newtonsoft.Json.dll"
+	"Newtonsoft.Json.dll",
+	"config.json"
 }
 
 client_script "*.net.dll"
