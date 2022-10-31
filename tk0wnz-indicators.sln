@@ -5,9 +5,15 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tk0wnz-indicators", "tk0wnz-indicators\tk0wnz-indicators.csproj", "{B97973B1-5352-4F33-9F72-B5D64215AF5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicIndicators.FiveM.Client", "FiveM.DynamicIndicators.Client\DynamicIndicators.FiveM.Client.csproj", "{9525FD85-7F5A-4F66-83B3-608174667FAE}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DynamicIndicators.Shared", "DynamicIndicators.Shared\DynamicIndicators.Shared.shproj", "{3ACCE8EF-4114-4393-8CBB-CA58A08F3BD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FiveMResourceFiles", "FiveMResourceFiles", "{CBF4CC61-F218-4468-BF16-E7944EB1A24C}"
+	ProjectSection(SolutionItems) = preProject
+		config.json = config.json
+		fxmanifest.lua = fxmanifest.lua
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicIndicators.FiveM.Client", "DynamicIndicators.FiveM.Client\DynamicIndicators.FiveM.Client.csproj", "{5AF871E0-9BA7-49C1-AFE1-FB435A1280DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +25,10 @@ Global
 		{B97973B1-5352-4F33-9F72-B5D64215AF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B97973B1-5352-4F33-9F72-B5D64215AF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B97973B1-5352-4F33-9F72-B5D64215AF5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9525FD85-7F5A-4F66-83B3-608174667FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9525FD85-7F5A-4F66-83B3-608174667FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9525FD85-7F5A-4F66-83B3-608174667FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9525FD85-7F5A-4F66-83B3-608174667FAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AF871E0-9BA7-49C1-AFE1-FB435A1280DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AF871E0-9BA7-49C1-AFE1-FB435A1280DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AF871E0-9BA7-49C1-AFE1-FB435A1280DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AF871E0-9BA7-49C1-AFE1-FB435A1280DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,7 +38,7 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		DynamicIndicators.Shared\DynamicIndicators.Shared.projitems*{3acce8ef-4114-4393-8cbb-ca58a08f3bd1}*SharedItemsImports = 13
-		DynamicIndicators.Shared\DynamicIndicators.Shared.projitems*{9525fd85-7f5a-4f66-83b3-608174667fae}*SharedItemsImports = 5
+		DynamicIndicators.Shared\DynamicIndicators.Shared.projitems*{5af871e0-9ba7-49c1-afe1-fb435a1280df}*SharedItemsImports = 5
 		DynamicIndicators.Shared\DynamicIndicators.Shared.projitems*{b97973b1-5352-4f33-9f72-b5d64215af5c}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,6 @@
 ﻿using CitizenFX.Core;
 
-namespace FiveM.DynamicIndicators.Client
+namespace DynamicIndicators.FiveM.Client
 {
     public class Main : BaseScript
     {
