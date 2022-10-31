@@ -9,8 +9,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DynamicIndicators.Shared", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FiveMResourceFiles", "FiveMResourceFiles", "{CBF4CC61-F218-4468-BF16-E7944EB1A24C}"
 	ProjectSection(SolutionItems) = preProject
-		config.json = config.json
-		fxmanifest.lua = fxmanifest.lua
+		FiveM-Resource-Files\config.json = FiveM-Resource-Files\config.json
+		FiveM-Resource-Files\fxmanifest.lua = FiveM-Resource-Files\fxmanifest.lua
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicIndicators.FiveM.Client", "DynamicIndicators.FiveM.Client\DynamicIndicators.FiveM.Client.csproj", "{5AF871E0-9BA7-49C1-AFE1-FB435A1280DF}"
