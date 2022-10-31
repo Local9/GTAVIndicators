@@ -358,7 +358,7 @@ namespace tk0wnz_indicators
 				}
 				else
 				{
-					if (blinkerParams.Debug == 1)
+					if (blinkerParams.Debug)
 					{
 						float hazOffTime = Function.Call<float>(Hash.GET_ENTITY_ANIM_CURRENT_TIME, vehicle,
 							animLib, "indihazoff");
@@ -391,7 +391,7 @@ namespace tk0wnz_indicators
 				}
 			}
 
-			if (blinkerParams.Debug == 1)
+			if (blinkerParams.Debug)
 			{
 				var pos = vehicle.Position;
 				pos.Z += 1.0f;
