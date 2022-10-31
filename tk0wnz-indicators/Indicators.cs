@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DynamicIndicators.Shared;
 using GTA;
 using tk0wnz_indicators;
 
 public class BlinkerStates : Script
 {
 	private ScriptSettings settings;
-	private List<BlinkerParams> blinkerParamsList = new List<BlinkerParams>();
+	private List<BlinkerParameters> blinkerParamsList = new List<BlinkerParameters>();
 
 	private Timer timer;
 	private List<Vehicle> vehicles;
@@ -44,7 +45,7 @@ public class BlinkerStates : Script
 			}
 
 			blinkerParamsList.Add(
-				new BlinkerParams
+				new BlinkerParameters
 				{
 					ModelName = modelName,
 					Duration = duration,
@@ -60,7 +61,7 @@ public class BlinkerStates : Script
 		var allVehicles = World.GetAllVehicles();
 		foreach (Vehicle vehicle in allVehicles)
 		{
-			BlinkerParams bla = blinkerParamsList.FirstOrDefault(x => Game.GenerateHash(x.ModelName) == vehicle.Model);
+            BlinkerParameters bla = blinkerParamsList.FirstOrDefault(x => Game.GenerateHash(x.ModelName) == vehicle.Model);
 			if (bla == null)
 				continue;
 

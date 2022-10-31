@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tk0wnz-indicators", "tk0wnz-indicators\tk0wnz-indicators.csproj", "{B97973B1-5352-4F33-9F72-B5D64215AF5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiveM.DynamicIndicators.Client", "FiveM.DynamicIndicators.Client\FiveM.DynamicIndicators.Client.csproj", "{9525FD85-7F5A-4F66-83B3-608174667FAE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicIndicators.FiveM.Client", "FiveM.DynamicIndicators.Client\DynamicIndicators.FiveM.Client.csproj", "{9525FD85-7F5A-4F66-83B3-608174667FAE}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DynamicIndicators.Shared", "DynamicIndicators.Shared\DynamicIndicators.Shared.shproj", "{3ACCE8EF-4114-4393-8CBB-CA58A08F3BD1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,5 +29,10 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8BA983F-C79C-44FF-98AD-B0D96F83A591}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		DynamicIndicators.Shared\DynamicIndicators.Shared.projitems*{3acce8ef-4114-4393-8cbb-ca58a08f3bd1}*SharedItemsImports = 13
+		DynamicIndicators.Shared\DynamicIndicators.Shared.projitems*{9525fd85-7f5a-4f66-83b3-608174667fae}*SharedItemsImports = 5
+		DynamicIndicators.Shared\DynamicIndicators.Shared.projitems*{b97973b1-5352-4f33-9f72-b5d64215af5c}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
@@ -7,5 +7,7 @@
   <ItemGroup>
     <PackageReference Include="CitizenFX.Core.Client" Version="1.0.5977" />
   </ItemGroup>
+
+  <Import Project="..\DynamicIndicators.Shared\DynamicIndicators.Shared.projitems" Label="Shared" />
 
 </Project>

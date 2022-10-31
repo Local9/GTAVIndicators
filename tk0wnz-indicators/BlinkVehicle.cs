@@ -1,14 +1,15 @@
-using System;
-using System.Collections.Generic;
+using DynamicIndicators.Shared;
 using GTA;
 using GTA.Native;
+using System;
+using System.Collections.Generic;
 
 namespace tk0wnz_indicators
 {
-    class BlinkVehicle
+	class BlinkVehicle
     {
 	    public Vehicle Vehicle;
-	    private BlinkerParams blinkerParams;
+	    private BlinkerParameters blinkerParams;
 
 	    private string animLib;
 
@@ -23,7 +24,7 @@ namespace tk0wnz_indicators
 	    private bool currEngineState = false;
 
 
-	    public BlinkVehicle(Vehicle vehicle, BlinkerParams blinkerParams)
+	    public BlinkVehicle(Vehicle vehicle, BlinkerParameters blinkerParams)
         {
             this.Vehicle = vehicle;
             this.blinkerParams = blinkerParams;

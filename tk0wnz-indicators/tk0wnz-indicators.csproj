@@ -50,13 +50,13 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlinkerParams.cs" />
     <Compile Include="BlinkVehicle.cs" />
     <Compile Include="Indicators.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
+  <Import Project="..\DynamicIndicators.Shared\DynamicIndicators.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetPath)" "D:\Games\Steam\SteamApps\common\Grand Theft Auto V\scripts\" /Y</PostBuildEvent>
