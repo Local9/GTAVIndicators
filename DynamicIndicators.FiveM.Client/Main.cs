@@ -3,6 +3,7 @@ using DynamicIndicators.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace DynamicIndicators.FiveM.Client
@@ -88,81 +89,39 @@ namespace DynamicIndicators.FiveM.Client
             bool areHazardsEnabled = _currentVehicle.IsLeftIndicatorLightOn && _currentVehicle.IsRightIndicatorLightOn;
             bool isEngineRunning = _currentVehicle.IsEngineRunning;
 
-            bool isPlayingAnimationHazadsOff = IsAnimationPlaying(ANIM_INDICATOR_HAZARD_OFF);
-            bool isPlayingAnimationLeftOff = IsAnimationPlaying(ANIM_INDICATOR_LEFT_OFF);
-            bool isPlayingAnimationRightOff = IsAnimationPlaying(ANIM_INDICATOR_RIGHT_OFF);
-
-            bool isPlayingAnimationHazadsOn = IsAnimationPlaying(ANIM_INDICATOR_HAZARD_ON);
-            bool isPlayingAnimationLeftOn = IsAnimationPlaying(ANIM_INDICATOR_LEFT_ON);
-            bool isPlayingAnimationRightOn = IsAnimationPlaying(ANIM_INDICATOR_RIGHT_ON);
-
             if (isEngineRunning)
             {
+                // Enable Hazard Lights
                 if (areHazardsEnabled)
                 {
-                    // Enable Hazard Lights
-                    if (_indicatorRightEnabled)
-                    {
-                        if (!isPlayingAnimationRightOff)
-                            PlayAnimation(ANIM_INDICATOR_RIGHT_OFF);
-                        else
-                        {
-                            _indicatorRightEnabled = false;
-                            _timerEnabled = false;
-                        }
-                    }
-                    else if (_indicatorLeftEnabled)
-                    {
-                        if (!isPlayingAnimationLeftOff)
-                            PlayAnimation(ANIM_INDICATOR_LEFT_OFF);
-                        else
-                        {
-                            _indicatorLeftEnabled = false;
-                            _timerEnabled = false;
-                        }
-                    }
-                    else
-                    {
-                        if (!_timerEnabled)
-                        {
-                            _globalGameTimer = GetGameTimer();
-                            _timerEnabled = true;
+                    TurnOffLeftIndicator();
+                    TurnOffRightIndicator();
 
-                            if (!_indicatorHazardManaged)
-                            {
-                                PlayAnimation(ANIM_INDICATOR_HAZARD_ON);
-                                _indicatorHazardManaged = true;
-                                _timerEnabled = false;
-                            }
-                        }
+                    TurnOnHazardIndicator();
+                }
+                
+                if (_currentVehicle.IsLeftIndicatorLightOn)
+                {
+                    TurnOffRightIndicator();
+                    TurnOffHazardIndicator();
 
-                        if (_globalGameTimer - GetGameTimer() > _currentBlinkerParameters.Duration)
-                        {
-                            PlayAnimation(ANIM_INDICATOR_HAZARD_ON);
-                            _timerEnabled = false;
-                        }
+                    TurnOnLeftIndicator();
+                }
+                
+                if (_currentVehicle.IsRightIndicatorLightOn)
+                {
+                    TurnOffLeftIndicator();
+                    TurnOffHazardIndicator();
 
-                        _indicatorHazardEnabled = true;
-                        _indicatorRightManaged = false;
-                        _indicatorLeftManaged = false;
-                    }
+                    TurnOnRightIndicator();
                 }
-                else if (_currentVehicle.IsLeftIndicatorLightOn)
-                {
-                    
-                }
-                else if (_currentVehicle.IsRightIndicatorLightOn)
-                {
-                    
-                }
-                else
-                {
-                    
-                }
+                
+                if (!areHazardsEnabled && !_currentVehicle.IsLeftIndicatorLightOn && !_currentVehicle.IsRightIndicatorLightOn)
+                    TurnOffAllLights();
             }
             else
             {
-                // turn off all
+                TurnOffAllLights();
             }
         }
 
@@ -174,6 +133,148 @@ namespace DynamicIndicators.FiveM.Client
         void PlayAnimation(string animationName)
         {
             PlayEntityAnim(_currentVehicle.Handle, animationName, $"va_{_currentBlinkerParameters.ModelName}", 8.0f, false, false, false, 0, 0);
+        }
+        
+        void TurnOffAllLights()
+        {
+            if (_indicatorLeftEnabled)
+                TurnOffLeftIndicator();
+            
+            if (_indicatorRightEnabled)
+                TurnOffRightIndicator();
+            
+            if (_indicatorHazardEnabled)
+                TurnOffHazardIndicator();
+
+            _indicatorRightEnabled = false;
+            _indicatorLeftEnabled = false;
+            _indicatorHazardEnabled = false;
+
+            _indicatorRightManaged = false;
+            _indicatorLeftManaged = false;
+            _indicatorHazardManaged = false;
+
+            _timerEnabled = false;
+        }
+
+        void TurnOffLeftIndicator()
+        {
+            if (_indicatorLeftEnabled)
+            {
+                if (!IsAnimationPlaying(ANIM_INDICATOR_LEFT_OFF))
+                    PlayAnimation(ANIM_INDICATOR_LEFT_OFF);
+                else
+                {
+                    _indicatorLeftEnabled = false;
+                    _timerEnabled = false;
+                }
+            }
+        }
+
+        void TurnOffRightIndicator()
+        {
+            if (_indicatorRightEnabled)
+            {
+                if (!IsAnimationPlaying(ANIM_INDICATOR_RIGHT_OFF))
+                    PlayAnimation(ANIM_INDICATOR_RIGHT_OFF);
+                else
+                {
+                    _indicatorRightEnabled = false;
+                    _timerEnabled = false;
+                }
+            }
+        }
+
+        void TurnOffHazardIndicator()
+        {
+            if (_indicatorHazardEnabled)
+            {
+                if (!IsAnimationPlaying(ANIM_INDICATOR_HAZARD_OFF))
+                    PlayAnimation(ANIM_INDICATOR_HAZARD_OFF);
+                else
+                {
+                    _indicatorHazardEnabled = false;
+                    _timerEnabled = false;
+                }
+            }
+        }
+
+        void TurnOnLeftIndicator()
+        {
+            if (!_timerEnabled)
+            {
+                _globalGameTimer = GetGameTimer();
+                _timerEnabled = true;
+
+                if (!_indicatorLeftManaged)
+                {
+                    PlayAnimation(ANIM_INDICATOR_LEFT_ON);
+                    _indicatorLeftManaged = true;
+                    _timerEnabled = false;
+                }
+            }
+
+            if (_globalGameTimer - GetGameTimer() > _currentBlinkerParameters.Duration)
+            {
+                PlayAnimation(ANIM_INDICATOR_LEFT_ON);
+                _timerEnabled = false;
+            }
+
+            _indicatorLeftEnabled = true;
+            _indicatorRightManaged = false;
+            _indicatorHazardManaged = false;
+        }
+
+        void TurnOnRightIndicator()
+        {
+            if (!_timerEnabled)
+            {
+                _globalGameTimer = GetGameTimer();
+                _timerEnabled = true;
+
+                if (!_indicatorRightManaged)
+                {
+                    PlayAnimation(ANIM_INDICATOR_RIGHT_ON);
+                    _indicatorRightManaged = true;
+                    _timerEnabled = false;
+                }
+            }
+
+            if (_globalGameTimer - GetGameTimer() > _currentBlinkerParameters.Duration)
+            {
+                PlayAnimation(ANIM_INDICATOR_RIGHT_ON);
+                _timerEnabled = false;
+            }
+
+            _indicatorRightEnabled = true;
+            _indicatorLeftManaged = false;
+            _indicatorHazardManaged = false;
+        }
+
+        void TurnOnHazardIndicator()
+        {
+            if (!_timerEnabled)
+            {
+                _globalGameTimer = GetGameTimer();
+                _timerEnabled = true;
+
+                if (!_indicatorHazardManaged)
+                {
+                    PlayAnimation(ANIM_INDICATOR_HAZARD_ON);
+                    _indicatorHazardManaged = true;
+                    _timerEnabled = false;
+                }
+            }
+
+            if (_globalGameTimer - GetGameTimer() > _currentBlinkerParameters.Duration)
+            {
+                PlayAnimation(ANIM_INDICATOR_HAZARD_ON);
+                _timerEnabled = false;
+            }
+
+            _indicatorHazardEnabled = true;
+            _indicatorRightManaged = false;
+            _indicatorLeftManaged = false;
         }
     }
 }
