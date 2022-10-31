@@ -37,7 +37,7 @@ public class BlinkerStates : Script
 		{
 			string modelName = settings.GetValue("CARS", "ModelName" + i, "RESERVED_NO_VALUE");
 			int duration = settings.GetValue("CARS", "Duration" + i, -1);
-			int debug = settings.GetValue("CARS", "Debug" + i, -1);
+			bool debug = settings.GetValue("CARS", "Debug" + i, -1) == 1;
 
 			if (modelName == null || modelName == "RESERVED_NO_VALUE" || duration == -1)
 			{
