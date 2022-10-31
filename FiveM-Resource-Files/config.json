@@ -1,0 +1,24 @@
+{
+  "vehicles": [
+    {
+      "model": "brabus800",
+      "duration": 0,
+      "debug": false
+    },
+    {
+      "model": "audirs6tk",
+      "duration": 1000,
+      "debug": false
+    },
+    {
+      "model": "mustang19",
+      "duration": 750,
+      "debug": false
+    },
+    {
+      "model": "2016rs7",
+      "duration": 833,
+      "debug": false
+    }
+  ]
+}
